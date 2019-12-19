@@ -1,7 +1,7 @@
 <title>UTL > Minecraft 2D</title>
 <div style="background-color:red;color:white;" align="center" id="error:texture" hidden><h1>ERROR: Some textures failed to load.</h1></div>
 <br>
-<h1>Minecraft 2D Release! (v1.0.3)</h1>
+<h1>Minecraft 2D Release! (v1.0.0)</h1>
 <br>
 Enter world code / get world code (Please start the game FIRST!):
 <br>
@@ -37,90 +37,12 @@ Debug Result:
 <canvas id="gameWindow" onclick="window.click = 1;setTimeout(clickUp,tickSpeed+5);" width=500 height=500 style="border-color:gray;border-style:solid;border-width:5px;cursor: none;" onmousemove="getMouse(event)">
 
 </canvas>
-<br>
-Bugs:
-<h1>---</h1>
--Brightness lag.<br>
--Some arrow keys don't work<br>
--Async world generation does not work.
-<h1>---</h1>
-Changelog:
-<h1>Release v1.0.0</h1>
--Created motion and hitbox. And dirt wood air and grass blocks.
--Created a block API. (NOT DONE!)<br>
--As of currently the bottom of blocks is semi-solid, it will not block jumping.<br>
--Infinite world sizes!<br>
--Also added a very rare chance to get a pink tree!<br>
--There are other rare things not listed...<br>
--Chunks save data every time you leave.<br>
--Fixed chunk array duplication. (Basicly chunks saved really weird and duplicated, wasting a TON of storage space!)<br>
--Created a small chance for a snow biome!<br>
--Also added an FPS counter! Stops the game when FPS is to low. (Removes progress unless you saved it.)<br>
--Added random text!
--Added tick speed modifier!
--Cordinate grid divides by 20.
-<h1>Release v1.0.1</h1>
-<b>Updates</b><br>
--API!<br>
--API now supports creation of blocks!<br>
--API scripts are comming soon!<br>
-<b>Bugs</b><br>
--All blocks have the same x and y value. (Fixed)<br>
--The bottom of blocks used to have a wacky hitbox. (Fixed)
-<h1>Release v1.0.2</h1>
-<b>Updates</b><br>
--API now supports block script!<br>
--Use "onLoop" and "onStart" to use them!<br>
--API now supports image loading! Replaces images with default image if broken.<br>
--API now supports block place chooser!<br>
--Cursor updated!<br>
-<b>Bugs</b><br>
--onLoop doesn't work<br>
--RETURN creates an error<br>
--Some arrow keys don't work
-<h1>Release v1.0.3 (Current)</h1>
-<b>Updates</b><br>
--Hitbox X + Y is now seprate from rendering function.<br>
--TNT added! (Properties:Fuse: 20- second,shockwave:0,explosionPower:10) Experimental version.<br>
--New text engine added! Allows multiline!<br>
-<b>Bugs</b><br>
--RETURN creates an error (Fixed)<br>
--onLoop doesn't work (Fixed)<br>
--Some arrow keys don't work<br>
--Placed air blocks don't have a hitbox. (Fixed)<br>
--TNT blocks with high explosion powers breaks unbreakable blocks.<br>
--Oak Leaves for some reason are so powerfull they don't explode to ANY explosion power!
-<h1>Release v1.0.4 (Comming)</h1>
-<b>Updates</b><br>
--Fixing chunk glitches. (Like chunkLength not affecting chunk generation)<br>
--Added sound engine. (Delayed)<br>
--API now supports sound engine!<br>
--Chunks are now combined!<br>
--Now uses the UTL.js core width utl_gui.js for gui. (Delayed)<br>
-<b>Bugs</b>
--World height isn't level with bottom most block.<br>
--Leaves don't explode! (Fixed)
-<h1>Release v1.0.5 (Comming)</h1>
-<b>Updates</b><br>
--World generation is now in two forms! (Async,sync) VERY BUGGY Mod Creators! Use SYNC!<br>
-<b>Bugs</b><br>
--Async world generation does not work.<br>
--Snow biomes don't generate. (Fixed)
-<h1>Release v1.0.6 (Comming) Christmas Update!</h1>
--Can now communicate with a server! (But that does not mean multiplayer is stable!)<br>
--Fixed major bugs.<br>
--Added inventory.<br>
--API now supports inventory!<br>
--Added loot tables.<br>
--API now supports loot tables!<br>
-<b>Bugs</b><br>
-Phew! No bugs here!
-
 
 <div id="imgContainer">
-  <img id="ERROR" src="resources/error.png">
+  <img id="ERROR" src="resources/game/images/error.png">
 </div>
 <script>
+var version = "1.0.0"
 setTimeout(function () {
   return;
   if (typeof localStorage.minecraftClose=="undefined") {return;}
@@ -156,7 +78,7 @@ function loadRandText() {
       style = "color:green;";
       break;
       case 5:
-      out = "Broken edition! (--)04-4340)";
+      out = "Broken edition! 404!";
   }
   randText.innerHTML = out;
   randText.style = style;
@@ -267,7 +189,12 @@ function render() {
     if (MovingParts[count].draw.type=="fillRect") {
       draw.fillRect(MovingParts[count].draw.x + distanceX,MovingParts[count].draw.y + distanceY,MovingParts[count].draw.width,MovingParts[count].draw.height);
     } else if (MovingParts[count].draw.type=="img") {
-      var img = document.getElementById(MovingParts[count].draw.image);
+      var img = MovingParts[count].draw.image;
+      for (var count = 0;count < imgConatiner.children;count++) {
+        if (imgContainer.children[count].gameId==img) {
+          img = imgContainer.children[count];break;
+        }
+      }
       draw.drawImage(img,MovingParts[count].draw.x + distanceX,MovingParts[count].draw.y + distanceY);
     } else if (MovingParts[count].draw.type=="strokeRect") {
       draw.strokeRect(MovingParts[count].draw.x + distanceX,MovingParts[count].draw.y + distanceY,MovingParts[count].draw.width,MovingParts[count].draw.height);
@@ -552,7 +479,7 @@ minecraftAPI.API.Link = minecraftAPI.API.Link.concat("minecraft");
 minecraftAPI
 minecraftAPI.minecraft = {};
 //Pic URL loader
-minecraftAPI.minecraft.imgData = [{url:"resources/grass_block.png",id:"grass_block"}];
+minecraftAPI.minecraft.imgData = [{url:"resources/game/images/grass_block.png",id:"grass_block"}];
 //Example:
 //minecraftAPI.minecraft.imgData = [{url:"https://URL HERE",id:"id/referance when using blocks/items with img"}];
 //Script: Id must match mcTest, type can be {name:"loop",value:tickDelay} or {name:"loopOnce",delay:tickDelay} 
@@ -603,10 +530,10 @@ function loadAPI() {
     for (var count2 = 0;count2 < minecraftAPI[minecraftAPI.API.Link[count]].imgData.length;count2++) {
       var imgData = minecraftAPI[minecraftAPI.API.Link[count]].imgData[count2];
       var imgElement = document.createElement("img");
-      imgElement.id = imgData.id;
+      imgElement.gameId = imgData.id;
       imgElement.src = imgData.url;
       imgElement.imgData = imgData;
-      imgElement.onerror = function () {this.src = "resources/error.png";document.getElementById("error:texture").hidden = false;} //IMG ERROR
+      imgElement.onerror = function () {this.src = "resources/game/images/error.png";document.getElementById("error:texture").hidden = false;} //IMG ERROR
       imgElement.hidden = true;
       document.getElementById("imgContainer").appendChild(imgElement);
     }
