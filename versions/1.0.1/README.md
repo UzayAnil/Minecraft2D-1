@@ -1,5 +1,6 @@
 # 1.0.1
-PLANNED!<br>
 Status: STABLE<br>
 Imporvements:<br>
--Added textures to existing blocks.
+-Created inventory renderer<br>
+More Info:<br>
+It renders the inventory, but isn't stable. No controls yet.
