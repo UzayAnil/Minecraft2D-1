@@ -2,6 +2,8 @@
 Please go to the version folder and click on your specified version.<br>
 Please Note: For best results, use google chrome to run the file.<br>
 Please Note: For Modders: Use the variable 'version' to get the current version.
+# How To Install
+Go to versions, choose the version you want, and then on the folder mc2d, download it.
 # How To Mod
 To create a mod you have to understand javascript and the API.<br>
 Basic Mod:<br>
