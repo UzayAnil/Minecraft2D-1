@@ -10,3 +10,5 @@ Then to run, double click on run.bat and choose your version. DO NOT CHOOSE '.' 
 Go to the [wiki](https://github.com/Henry0804/Minecraft2D/wiki)
 # Links
 Here is a list of all the websites used to create the game! [LINK](https://github.com/Henry0804/Minecraft2D/blob/master/LINKS.md)
+# Minecraft2D Servers?
+Yes those will come out soon, minecraft 2d communicates fine with servers... The problem is using the data it recives...
