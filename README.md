@@ -8,3 +8,5 @@ OR hit clone or download, and download the whole thing.<br>
 Then to run, double click on run.bat and choose your version. DO NOT CHOOSE '.' OR '..'.
 # How To Mod
 Go to the [wiki](https://github.com/Henry0804/Minecraft2D/wiki)
+# Links
+Here is a list of all the websites used to create the game! [LINK](https://github.com/Henry0804/Minecraft2D/blob/master/LINKS.md)
