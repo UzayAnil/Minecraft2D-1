@@ -2,6 +2,7 @@
 Please go to the version folder and click on your specified version.<br>
 Please Note: For best results, use google chrome to run the file.<br>
 Please Note: For Modders: Use the variable 'version' to get the current version.
+PLEASE NOTE: This is just a basic consept of HTML games, this game is on hold until one of my new games is released.
 # How To Install
 Go to versions, choose the version you want, and then on the folder mc2d, download it.<br>
 OR hit clone or download, and download the whole thing.<br>
